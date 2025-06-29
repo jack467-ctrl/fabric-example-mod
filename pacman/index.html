@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pac-Man</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-info">
+        Score: <span id="score-display">0</span>
+    </div>
+    <div id="game-container">
+        <div id="game-board">
+            <div id="pacman"></div>
+            <!-- Dots -->
+            <div class="dot" style="top: 50px; left: 100px;"></div>
+            <div class="dot" style="top: 50px; left: 150px;"></div>
+            <div class="dot" style="top: 100px; left: 50px;"></div>
+            <!-- Add more dots for a fuller game -->
+            <div class="dot" style="top: 200px; left: 200px;"></div>
+            <div class="dot" style="top: 250px; left: 300px;"></div>
+            <div class="dot" style="top: 300px; left: 100px;"></div>
+
+            <!-- Ghosts -->
+            <div id="ghost-blinky" class="ghost"></div> <!-- Red -->
+            <div id="ghost-pinky" class="ghost"></div>  <!-- Pink -->
+            <!-- <div id="ghost-inky" class="ghost"></div> -->  <!-- Cyan (for later) -->
+            <!-- <div id="ghost-clyde" class="ghost"></div> --> <!-- Orange (for later) -->
+        </div>
+        <div id="controls">
+            <button id="btn-up">Up</button>
+            <div>
+                <button id="btn-left">Left</button>
+                <button id="btn-down">Down</button>
+                <button id="btn-right">Right</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

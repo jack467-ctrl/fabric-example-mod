@@ -1,0 +1,190 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #111;
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#game-info {
+    margin-bottom: 15px;
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+}
+
+#score-display {
+    font-weight: bold;
+    color: yellow; /* Classic score color */
+}
+
+#game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#game-board {
+    width: 440px;
+    height: 440px;
+    background-color: #00001a; /* Darker, classic blue/black */
+    border: 3px solid #3333ff; /* Neon blue border */
+    box-shadow: 0 0 15px #3333ff60; /* Subtle glow */
+    position: relative;
+    overflow: hidden;
+}
+
+#pacman {
+    width: 30px;
+    height: 30px;
+    background-color: yellow;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    transform: rotate(var(--pacman-rotation, 0deg));
+    transition: transform 0.05s linear,
+                left 0.05s linear,
+                top 0.05s linear,
+                clip-path 0.075s ease-in-out;
+}
+
+#pacman.mouth-open {
+    clip-path: polygon(
+        50% 50%,  /* Center of mouth */
+        100% 25%, /* Tip of upper jaw */
+        100% 0%,  /* Around top edge */
+        0% 0%,    /* Around left edge */
+        0% 100%,  /* Around bottom edge */
+        100% 100%,/* Continue around bottom edge */
+        100% 75%  /* Tip of lower jaw */
+    );
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: #ffb8ae; /* Classic dot color */
+    border-radius: 50%;
+    position: absolute;
+    box-shadow: 0 0 5px #ffb8ae80; /* Subtle glow */
+}
+
+.ghost {
+    width: 28px;
+    height: 28px;
+    position: absolute;
+    border-top-left-radius: 14px; /* Half of width for rounded top */
+    border-top-right-radius: 14px;
+    transition: left 0.1s linear, top 0.1s linear; /* For smooth ghost movement */
+}
+
+.ghost::before, .ghost::after { /* Eyes */
+    content: '';
+    position: absolute;
+    background-color: white;
+    width: 6px;
+    height: 8px;
+    border-radius: 50%;
+    top: 8px;
+}
+
+.ghost::before { /* Left eye */
+    left: 6px;
+}
+.ghost::after { /* Right eye */
+    right: 6px;
+}
+
+/* Ghost-specific colors and initial positions */
+#ghost-blinky {
+    background-color: red;
+    top: 180px; /* Example initial position */
+    left: 200px;
+}
+#ghost-pinky {
+    background-color: pink;
+    top: 220px; /* Example initial position */
+    left: 200px;
+}
+
+#controls {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#controls div { /* For centering the middle row of buttons */
+    display: flex;
+    justify-content: center;
+}
+
+#controls button {
+    background-color: #2c2c54;
+    color: #e0e0e0;
+    border: 2px solid #474787;
+    padding: 12px 18px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+#controls button:hover {
+    background-color: #474787;
+    transform: translateY(-2px);
+}
+
+#controls button:active {
+    transform: translateY(1px);
+}
+
+#btn-up::before { content: "↑ "; }
+#btn-down::before { content: "↓ "; }
+#btn-left::before { content: "← "; }
+#btn-right::before { content: "→ "; }
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    #game-board {
+        width: 90vw;
+        height: 90vw;
+        border-width: 2px;
+    }
+
+    #pacman {
+        width: 25px;
+        height: 25px;
+    }
+
+    .dot {
+        width: 8px;
+        height: 8px;
+    }
+
+    .ghost {
+        width: 22px;
+        height: 22px;
+        border-top-left-radius: 11px;
+        border-top-right-radius: 11px;
+    }
+    .ghost::before, .ghost::after { /* Adjust eyes */
+        width: 5px;
+        height: 6px;
+        top: 6px;
+    }
+    .ghost::before { left: 5px; }
+    .ghost::after { right: 5px; }
+
+    #controls button {
+        padding: 15px 20px;
+        font-size: 18px;
+    }
+}
